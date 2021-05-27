@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import moment from 'moment-timezone';
 
@@ -6,27 +6,39 @@ function App() {
 
   const [items, setItems] = useState([]);
 
-  useEffect(() => {
-    // setInterval(() => {
-    //   console.log('hello')
-    // }, 1000)
-  }, []);
+  let interval = setInterval(() => {
+    updateTimeZones();
+  }, 1000)
 
   function addTimeZone(e) {
     e.preventDefault();
-  
+    clearInterval(interval);
+
     // Get name and time zone
     const value = e.target.value;
     const valueArr = value.split('_');
     const name = valueArr.join(' ');
     if (items.some(item => item.name === name)) return; // Return if time zone is already on list
     const newTimeZone = moment().tz(e.target.value).format('h:mm:ss a z');
-    
+
     // Add to items array
     setItems(prevState => [...prevState, {
       name: name,
-      time: newTimeZone
+      time: newTimeZone,
+      value: value
     }])
+
+    interval = setInterval(() => {
+      updateTimeZones();
+    }, 1000);
+  }
+
+  function updateTimeZones() {
+    const tempItems = [...items];
+    tempItems.forEach(item => {
+      item.time = moment().tz(item.value).format('h:mm:ss a z');
+    })
+    setItems(tempItems);
   }
 
   return (
