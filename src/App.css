@@ -41,6 +41,20 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px;
+}
+
+.item:hover {
+  background-color: #d9e4bb;
+}
+
+.item>p {
+  margin: 0;
+  pointer-events: none;
+}
+
+.item:not(:last-child) {
+  border-bottom: 1px solid #c0c0c0;
 }
 
 .item>div {
