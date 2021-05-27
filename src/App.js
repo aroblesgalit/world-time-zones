@@ -15,7 +15,7 @@ function App() {
           <div class='item'>
             <p>Time zone name</p>
             <p>12:10:20</p>
-            <span>Delete</span>
+            <div>&#10006;</div>
           </div>
         </div>
       </div>
