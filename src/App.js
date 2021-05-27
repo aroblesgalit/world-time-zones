@@ -4,6 +4,14 @@ import Item from './components/Item';
 
 function App() {
 
+  const timezones = [
+    { value: 'America/New_York', name: 'America/New York' },
+    { value: 'America/Los_Angeles', name: 'America/Los Angeles' },
+    { value: 'Europe/London', name: 'Europe/London' },
+    { value: 'Australia/Sydney', name: 'Australia/Sydney' },
+    { value: 'Asia/Tokyo', name: 'Asia/Tokyo' },
+  ]
+
   const [items, setItems] = useState([]);
 
   function addTimeZone(e) {
@@ -23,9 +31,9 @@ function App() {
         <h1>World Time Zones</h1>
         <select name='time-zones' id='time-zones' onChange={(e) => addTimeZone(e)}>
           <option value='' selected disabled>Select a time zone to add</option>
-          <option value='America/New_York'>America/New York</option>
-          <option value='America/Los_Angeles'>America/Los Angeles</option>
-          <option value='America/London'>Europe/London</option>
+          {
+            timezones.map((timezone, i) => <option key={`${i}-${timezone.value}`} value={timezone.value}>{timezone.name}</option>)
+          }
         </select>
         <div className='list'>
           {
