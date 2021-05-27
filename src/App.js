@@ -25,6 +25,13 @@ function App() {
     setItems(prevState => [...prevState, item])
   }
 
+  function deleteTimeZone(e, i) {
+    e.preventDefault();
+    const currentItems = [...items];
+    currentItems.splice(i, 1);
+    setItems(currentItems);
+  }
+
   return (
     <main>
       <div>
@@ -38,7 +45,7 @@ function App() {
         <div className='list'>
           {
             items && items.map((item, i) => {
-              return <Item key={`${i}-${item}`} item={item} />
+              return <Item key={`${i}-${item}`} item={item} onDelete={(e) => deleteTimeZone(e, i)} />
             })
           }
         </div>
