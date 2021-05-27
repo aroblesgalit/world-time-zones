@@ -14,11 +14,13 @@ const Item = ({ item }) => {
     });
 
     useEffect(() => {
+        let isMounted = true; // For the Warning: "Can't perform a React state update on an unmounted component"
         setInterval(() => {
-            setTime(() => {
+            if (isMounted) setTime(() => {
                 return moment().tz(item).format('h:mm:ss a z');
             });
         }, 1000)
+        return () => { isMounted = false };
     }, [])
 
     return (
