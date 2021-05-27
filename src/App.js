@@ -1,44 +1,20 @@
 import React, { useState } from 'react';
 import './App.css';
-import moment from 'moment-timezone';
+import Item from './components/Item';
 
 function App() {
 
   const [items, setItems] = useState([]);
 
-  let interval = setInterval(() => {
-    updateTimeZones();
-  }, 1000)
-
   function addTimeZone(e) {
     e.preventDefault();
-    clearInterval(interval);
 
-    // Get name and time zone
-    const value = e.target.value;
-    const valueArr = value.split('_');
-    const name = valueArr.join(' ');
-    if (items.some(item => item.name === name)) return; // Return if time zone is already on list
-    const newTimeZone = moment().tz(e.target.value).format('h:mm:ss a z');
+    const item = e.target.value;
+
+    if (items.includes(item)) return; // Return if time zone is already on list
 
     // Add to items array
-    setItems(prevState => [...prevState, {
-      name: name,
-      time: newTimeZone,
-      value: value
-    }])
-
-    interval = setInterval(() => {
-      updateTimeZones();
-    }, 1000);
-  }
-
-  function updateTimeZones() {
-    const tempItems = [...items];
-    tempItems.forEach(item => {
-      item.time = moment().tz(item.value).format('h:mm:ss a z');
-    })
-    setItems(tempItems);
+    setItems(prevState => [...prevState, item])
   }
 
   return (
@@ -54,13 +30,7 @@ function App() {
         <div className='list'>
           {
             items && items.map((item, i) => {
-              return (
-                <div key={`${i}-${item.name}`} className='item'>
-                  <p>{item.name}</p>
-                  <p>{item.time}</p>
-                  <div>&#10006;</div>
-                </div>
-              )
+              return <Item key={`${i}-${item}`} item={item} />
             })
           }
         </div>
