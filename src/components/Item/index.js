@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import moment from 'moment-timezone';
 import './item.css';
 
-const Item = ({ item }) => {
+const Item = ({ item, onDelete }) => {
 
     const [value] = useState(item);
     const [name] = useState(() => {
@@ -27,7 +27,7 @@ const Item = ({ item }) => {
         <div className='item'>
             <p>{name}</p>
             <p>{time}</p>
-            <div>&#10006;</div>
+            <div onClick={onDelete}>&#10006;</div>
         </div>
     )
 }
