@@ -57,7 +57,7 @@ function App() {
       <div>
         <h1>World Time Zones</h1>
         <select name='time-zones' id='time-zones' onChange={(e) => addTimeZone(e)}>
-          <option value='' selected>Select a time zone to add</option>
+          <option value=''>Select a time zone to add</option>
           {
             timezones.map((timezone, i) => <option key={`${i}-${timezone.value}`} value={timezone.value}>{timezone.name}</option>)
           }

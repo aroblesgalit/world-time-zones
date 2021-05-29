@@ -20,6 +20,7 @@ main {
 h1 {
   margin: 0 0 30px;
   text-align: center;
+  color: rgb(40, 55, 77);
 }
 
 select {
@@ -34,6 +35,10 @@ select {
 
 select:focus {
   outline: none;
+}
+
+select>option:first-child {
+  color: #999;
 }
 
 .list {
