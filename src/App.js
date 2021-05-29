@@ -5,11 +5,11 @@ import Item from './components/Item';
 function App() {
 
   const [timezones, setTimezones] = useState([
-    { value: 'America/New_York', name: 'America/New York' },
     { value: 'America/Los_Angeles', name: 'America/Los Angeles' },
-    { value: 'Europe/London', name: 'Europe/London' },
-    { value: 'Australia/Sydney', name: 'Australia/Sydney' },
+    { value: 'America/New_York', name: 'America/New York' },
     { value: 'Asia/Tokyo', name: 'Asia/Tokyo' },
+    { value: 'Australia/Sydney', name: 'Australia/Sydney' },
+    { value: 'Europe/London', name: 'Europe/London' },
   ]);
 
   const [items, setItems] = useState([]);
@@ -41,6 +41,7 @@ function App() {
       value: item.join(),
       name: item.join().split('_').join(' ')
     })
+    newTimezones.sort((a, b) => a.value > b.value ? 1 : -1);
     setTimezones(newTimezones);
   }
 
