@@ -71,6 +71,11 @@ function App() {
             }
           </tbody>
         </table>
+        {
+          items.length > 1 && (
+            <div id='refresh' onClick={() => window.location.reload()}>&#8635; Sync</div>
+          )
+        }
       </div>
     </main>
   );
