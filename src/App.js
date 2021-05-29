@@ -42,13 +42,13 @@ function App() {
             timezones.map((timezone, i) => <option key={`${i}-${timezone.value}`} value={timezone.value}>{timezone.name}</option>)
           }
         </select>
-        <div className='list'>
+        <table className='list'>
           {
             items && items.map((item, i) => {
               return <Item key={`${i}-${item}`} item={item} onDelete={(e) => deleteTimeZone(e, i)} />
             })
           }
-        </div>
+        </table>
       </div>
     </main>
   );

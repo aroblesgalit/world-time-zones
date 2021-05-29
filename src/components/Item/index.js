@@ -24,11 +24,11 @@ const Item = ({ item, onDelete }) => {
     }, [])
 
     return (
-        <div className='item'>
-            <p>{name}</p>
-            <p>{time}</p>
-            <div onClick={onDelete}>&#10006;</div>
-        </div>
+        <tr className='item'>
+            <td><p>{name}</p></td>
+            <td><p>{time}</p></td>
+            <td onClick={onDelete}><div>&#10006;</div></td>
+        </tr>
     )
 }
 

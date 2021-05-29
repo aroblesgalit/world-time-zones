@@ -1,24 +1,21 @@
-.item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
+.item:not(:last-child) {
+    border-bottom: 1px solid #c0c0c0;
 }
 
 .item:hover {
     background-color: #d9e4bb;
 }
 
-.item>p {
+.item>td {
+    padding: 10px;
+}
+
+.item>td>p {
     margin: 0;
     pointer-events: none;
 }
 
-.item:not(:last-child) {
-    border-bottom: 1px solid #c0c0c0;
-}
-
-.item>div {
+.item>td>div {
     color: rgb(228, 41, 41);
     cursor: pointer;
 }
