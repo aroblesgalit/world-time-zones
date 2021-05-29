@@ -1,16 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Item from './components/Item';
 
 function App() {
 
   const [timezones, setTimezones] = useState(JSON.parse(localStorage.getItem('timezones')) || [
-    { value: 'America/Los_Angeles', name: 'America/Los Angeles' },
-    { value: 'America/New_York', name: 'America/New York' },
-    { value: 'Asia/Tokyo', name: 'Asia/Tokyo' },
-    { value: 'Australia/Sydney', name: 'Australia/Sydney' },
-    { value: 'Europe/London', name: 'Europe/London' },
+    // { value: 'America/Los_Angeles', name: 'America/Los Angeles' },
+    // { value: 'America/New_York', name: 'America/New York' },
+    // { value: 'Asia/Tokyo', name: 'Asia/Tokyo' },
+    // { value: 'Australia/Sydney', name: 'Australia/Sydney' },
+    // { value: 'Europe/London', name: 'Europe/London' },
   ]);
+
+  useEffect(() => {
+    fetch('https://worldtimeapi.org/api/timezone')
+      .then(res => res.json())
+      .then(res => {
+        const tempTimezones = [];
+        for (let i = 0; i < res.length; i++) {
+          tempTimezones.push({
+            value: res[i],
+            name: res[i].split('_').join(' ')
+          })
+        }
+        return tempTimezones;
+      })
+      .then(res => setTimezones(res))
+      .catch(err => console.log(err))
+  }, [])
 
   const [items, setItems] = useState(JSON.parse(localStorage.getItem('items')) || []);
 
