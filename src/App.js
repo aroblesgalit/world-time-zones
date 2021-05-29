@@ -4,7 +4,7 @@ import Item from './components/Item';
 
 function App() {
 
-  const [timezones, setTimezones] = useState([
+  const [timezones, setTimezones] = useState(JSON.parse(localStorage.getItem('timezones')) || [
     { value: 'America/Los_Angeles', name: 'America/Los Angeles' },
     { value: 'America/New_York', name: 'America/New York' },
     { value: 'Asia/Tokyo', name: 'Asia/Tokyo' },
@@ -12,21 +12,24 @@ function App() {
     { value: 'Europe/London', name: 'Europe/London' },
   ]);
 
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem('items')) || []);
 
   function addTimeZone(e) {
     e.preventDefault();
 
     const item = e.target.value;
-
     if (items.includes(item)) return; // Return if time zone is already on list
 
     // Add to items array
     setItems(prevState => [...prevState, item])
+    // Store items in localstorage
+    localStorage.setItem('items', JSON.stringify([...items, item]));
 
     // Remove item from timezones array
     const newTimezones = [...timezones].filter(timezone => timezone.value !== item);
     setTimezones(newTimezones);
+    // Store timezones in localstorage
+    localStorage.setItem('timezones', JSON.stringify(newTimezones));
   }
 
   function deleteTimeZone(e, i) {
@@ -34,6 +37,8 @@ function App() {
     const currentItems = [...items];
     const item = currentItems.splice(i, 1);
     setItems(currentItems);
+    // Store items in localstorage
+    localStorage.setItem('items', JSON.stringify(currentItems));
 
     // Add item back into timezones array
     const newTimezones = [...timezones];
@@ -43,6 +48,8 @@ function App() {
     })
     newTimezones.sort((a, b) => a.value > b.value ? 1 : -1);
     setTimezones(newTimezones);
+    // Store timezones in localstorage
+    localStorage.setItem('timezones', JSON.stringify(newTimezones));
   }
 
   return (
