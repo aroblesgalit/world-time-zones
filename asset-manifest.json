@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/world-time-zones/static/css/main.3ed43fab.chunk.css",
+    "main.js": "/world-time-zones/static/js/main.727696c5.chunk.js",
+    "main.js.map": "/world-time-zones/static/js/main.727696c5.chunk.js.map",
+    "runtime-main.js": "/world-time-zones/static/js/runtime-main.ba33ee67.js",
+    "runtime-main.js.map": "/world-time-zones/static/js/runtime-main.ba33ee67.js.map",
+    "static/js/2.c476278c.chunk.js": "/world-time-zones/static/js/2.c476278c.chunk.js",
+    "static/js/2.c476278c.chunk.js.map": "/world-time-zones/static/js/2.c476278c.chunk.js.map",
+    "static/js/3.236974ce.chunk.js": "/world-time-zones/static/js/3.236974ce.chunk.js",
+    "static/js/3.236974ce.chunk.js.map": "/world-time-zones/static/js/3.236974ce.chunk.js.map",
+    "index.html": "/world-time-zones/index.html",
+    "static/css/main.3ed43fab.chunk.css.map": "/world-time-zones/static/css/main.3ed43fab.chunk.css.map",
+    "static/js/2.c476278c.chunk.js.LICENSE.txt": "/world-time-zones/static/js/2.c476278c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ba33ee67.js",
+    "static/js/2.c476278c.chunk.js",
+    "static/css/main.3ed43fab.chunk.css",
+    "static/js/main.727696c5.chunk.js"
+  ]
+}
